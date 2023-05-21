@@ -3,7 +3,7 @@ const UserEntity = require('./entity.js');
 
 const fetchDataAndCreateEntities = async () => {
   try {
-    const response = await axios.get('https://example.com/api/data');
+    const response = await axios.get('https://api.wazirx.com/api/v2/tickers');
     const apiData = response.data;
 
     for (let i = 0; i < apiData.length; i++) {
