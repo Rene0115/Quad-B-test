@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "build": "babel src --out-dir dist"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,9 @@
   },
   "type": "commonjs",
   "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/plugin-proposal-decorators": "^7.21.0",
+    "@babel/preset-env": "^7.21.5",
     "nodemon": "^2.0.22"
   }
 }
