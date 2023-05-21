@@ -1,21 +1,21 @@
-const express = require('express');
-const cors = require('cors');
-const router = require('./route.js');
-const bodyParser = require('body-parser');
+import { json, urlencoded } from 'express';
+import cors from 'cors';
+import router from './route.js';
+import { urlencoded as _urlencoded, json as _json } from 'body-parser';
 
 const middleware = (app) => {
   // Enable CORS
   app.use(cors());
 
   // Parse incoming JSON data
-  app.use(express.json());
+  app.use(json());
 
   // Parse incoming URL-encoded data
-  app.use(express.urlencoded({ extended: true }));
+  app.use(urlencoded({ extended: true }));
 
   // Parse incoming URL-encoded data and JSON data
-  app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(bodyParser.json());
+  app.use(_urlencoded({ extended: false }));
+  app.use(_json());
 
   // Register the router
   app.use(router);
@@ -26,4 +26,4 @@ const middleware = (app) => {
   });
 };
 
-module.exports = middleware;
+export default middleware;

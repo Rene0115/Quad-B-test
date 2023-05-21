@@ -1,4 +1,4 @@
-const { Entity, Column, PrimaryGeneratedColumn } = require('typeorm');
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 class UserEntity {
   @PrimaryGeneratedColumn()
@@ -41,4 +41,4 @@ class UserEntity {
   name;
 }
 
-module.exports = UserEntity;
+export default UserEntity;

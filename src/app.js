@@ -1,10 +1,10 @@
-const express = require('express');
-const pino = require('pino');
-const dotenv = require('dotenv');
-const database = require('./db.config.js');
-require('reflect-metadata');
+import express from 'express';
+import pino from 'pino';
+import { config } from 'dotenv';
+import database from './db.config.js';
+import 'reflect-metadata';
 
-dotenv.config();
+config();
 
 const app = express();
 const logger = pino();

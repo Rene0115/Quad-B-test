@@ -1,9 +1,9 @@
-const axios = require('axios');
-const UserEntity = require('./entity.js');
+import { get } from 'axios';
+import UserEntity from './entity.js';
 
 const fetchDataAndCreateEntities = async () => {
   try {
-    const response = await axios.get('https://api.wazirx.com/api/v2/tickers');
+    const response = await get('https://api.wazirx.com/api/v2/tickers');
     const apiData = response.data;
 
     for (let i = 0; i < apiData.length; i++) {
@@ -33,4 +33,4 @@ const fetchDataAndCreateEntities = async () => {
   }
 };
 
-module.exports = fetchDataAndCreateEntities;
+export default fetchDataAndCreateEntities;
