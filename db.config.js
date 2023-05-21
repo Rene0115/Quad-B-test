@@ -1,21 +1,23 @@
-import { DataSource } from 'typeorm';
-import logger from '../app.js';
-import UserEntity from './entity.js';
-import dotenv from 'dotenv';
+const { DataSource } = require('typeorm');
+const logger = require('./app.js');
+const UserEntity = require('./entity.js');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
 const database = async () => {
- const dataSource = new DataSource({
-    type: 'mysql',
-    database: process.env.DATABASE_NAME,
-    username: process.env.DATABASE_USERNAME,
-    password: process.env.DATABASE_PASSWORD,
-    logging: true,
+  const dataSource = new DataSource({
+    type: 'postgres',
+    host: 'localhost',
+    port: 5432,
+    username: 'postgres',
+    password: '',
+    database: 'postgres',
     synchronize: false,
-    entities: [UserEntity]
+    entities: [UserEntity],
   });
-  await dataSource.initialize()
-  logger.info('Database Connected')
+  await dataSource.initialize();
+  logger.info('Database Connected');
 };
-export default database;
+
+module.exports = database;

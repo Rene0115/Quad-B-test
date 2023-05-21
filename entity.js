@@ -1,7 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+const { Entity, Column, PrimaryGeneratedColumn } = require('typeorm');
 
-@Entity()
-export class UserEntity {
+class UserEntity {
   @PrimaryGeneratedColumn()
   id;
 
@@ -42,4 +41,4 @@ export class UserEntity {
   name;
 }
 
-export default UserEntity;
+module.exports = UserEntity;
