@@ -1,8 +1,8 @@
-import { Router } from 'express';
+import express from 'express';
 import entityRouter from './entity.route.js';
 
-const router = Router();
+const router = express.Router();
 
-router.use('/', entityRouter);
+router.use('/entity', entityRouter);
 
 export default router;

@@ -1,11 +1,9 @@
 import { DataSource } from 'typeorm';
-import logger from './app.js';
 import UserEntity from './entity.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const database = async () => {
   const dataSource = new DataSource({
     type: 'postgres',
     host: 'localhost',
@@ -16,8 +14,8 @@ const database = async () => {
     synchronize: false,
     entities: [UserEntity],
   });
-  await dataSource.initialize();
-  logger.info('Database Connected');
-};
 
-export default database;
+  export default dataSource;
+
+
+

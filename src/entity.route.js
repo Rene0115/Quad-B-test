@@ -1,7 +1,7 @@
-import { Router } from 'express';
+import express from 'express';
 import fetchDataAndCreateEntities from './controller.js';
 
-const entityRouter = Router();
+const entityRouter = express.Router();
 
 entityRouter.post('/create', fetchDataAndCreateEntities);
 

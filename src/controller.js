@@ -1,35 +1,38 @@
-import { get } from 'axios';
-import UserEntity from './entity.js';
+import axios from "axios";
+import dataSource from "./db.config.js";
+import UserEntity from "./entity.js";
 
-const fetchDataAndCreateEntities = async () => {
+const fetchDataAndCreateEntities = async (req, res) => {
   try {
-    const response = await get('https://api.wazirx.com/api/v2/tickers');
+    const response = await axios.get("https://api.wazirx.com/api/v2/tickers");
     const apiData = response.data;
 
-    for (let i = 0; i < apiData.length; i++) {
-      const item = apiData[i];
+    const userRepository =  dataSource.getRepository(UserEntity);
 
-      const entity = new UserEntity();
-      entity.base_unit = item.base_unit;
-      entity.quote_unit = item.quote_unit;
-      entity.low = parseFloat(item.low);
-      entity.high = parseFloat(item.high);
-      entity.last = parseFloat(item.last);
-      entity.type = item.type;
-      entity.open = parseInt(item.open);
-      entity.volume = parseFloat(item.volume);
-      entity.sell = parseFloat(item.sell);
-      entity.buy = parseFloat(item.buy);
-      entity.at = parseInt(item.at);
-      entity.name = item.name;
+    const updatedObject = {};
 
-      // Save the entity to the database
-      await entity.save();
+    let count = 0;
+    for (const key in apiData) {
+      if (count >= 10) {
+        break;
+      }
+      updatedObject[key] = apiData[key];
+     userRepository.create(updatedObject);
+      count++;
     }
+const users = await userRepository.find();
 
-    console.log('Entities created successfully');
+return res.status(200).send({
+  success: true,
+  data: users
+})
+
   } catch (error) {
-    console.log('Error fetching data from API:', error);
+    console.log(error);
+    return res.status(400).send({
+      success: false,
+      error: error.message,
+    });
   }
 };
 
