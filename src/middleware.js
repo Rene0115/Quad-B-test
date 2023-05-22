@@ -2,10 +2,13 @@ import { json, urlencoded } from 'express';
 import cors from 'cors';
 import router from './route.js';
 import { urlencoded as _urlencoded, json as _json } from 'body-parser';
+import morgan from 'morgan';
 
 const middleware = (app) => {
   // Enable CORS
   app.use(cors());
+
+  app.use(morgan('dev'))
 
   // Parse incoming JSON data
   app.use(json());

@@ -1,23 +1,23 @@
 import { DataSource } from 'typeorm';
-import { info } from './app.js';
+import logger from './app.js';
 import UserEntity from './entity.js';
-import { config } from 'dotenv';
+import dotenv from 'dotenv';
 
-config();
+dotenv.config();
 
 const database = async () => {
   const dataSource = new DataSource({
     type: 'postgres',
     host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: 'rene',
-    database: 'postgres',
+    port: process.env.DATABASE_PORT,
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE,
     synchronize: false,
     entities: [UserEntity],
   });
   await dataSource.initialize();
-  info('Database Connected');
+  logger.info('Database Connected');
 };
 
 export default database;

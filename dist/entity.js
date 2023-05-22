@@ -1,6 +1,11 @@
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _typeorm = require("typeorm");
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13;
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -10,45 +15,41 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
 function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
-var _require = require('typeorm'),
-  Entity = _require.Entity,
-  Column = _require.Column,
-  PrimaryGeneratedColumn = _require.PrimaryGeneratedColumn;
-var UserEntity = (_dec = PrimaryGeneratedColumn(), _dec2 = Column({
+var UserEntity = (_dec = (0, _typeorm.PrimaryGeneratedColumn)(), _dec2 = (0, _typeorm.Column)({
   type: 'varchar'
-}), _dec3 = Column({
+}), _dec3 = (0, _typeorm.Column)({
   type: 'varchar'
-}), _dec4 = Column({
+}), _dec4 = (0, _typeorm.Column)({
   type: 'decimal',
   precision: 12,
   scale: 2
-}), _dec5 = Column({
+}), _dec5 = (0, _typeorm.Column)({
   type: 'decimal',
   precision: 12,
   scale: 2
-}), _dec6 = Column({
+}), _dec6 = (0, _typeorm.Column)({
   type: 'decimal',
   precision: 12,
   scale: 2
-}), _dec7 = Column({
+}), _dec7 = (0, _typeorm.Column)({
   type: 'varchar'
-}), _dec8 = Column({
+}), _dec8 = (0, _typeorm.Column)({
   type: 'bigint'
-}), _dec9 = Column({
+}), _dec9 = (0, _typeorm.Column)({
   type: 'decimal',
   precision: 12,
   scale: 5
-}), _dec10 = Column({
+}), _dec10 = (0, _typeorm.Column)({
   type: 'decimal',
   precision: 12,
   scale: 2
-}), _dec11 = Column({
+}), _dec11 = (0, _typeorm.Column)({
   type: 'decimal',
   precision: 12,
   scale: 2
-}), _dec12 = Column({
+}), _dec12 = (0, _typeorm.Column)({
   type: 'bigint'
-}), _dec13 = Column({
+}), _dec13 = (0, _typeorm.Column)({
   type: 'varchar'
 }), (_class = /*#__PURE__*/_createClass(function UserEntity() {
   _classCallCheck(this, UserEntity);
@@ -131,4 +132,5 @@ var UserEntity = (_dec = PrimaryGeneratedColumn(), _dec2 = Column({
   writable: true,
   initializer: null
 })), _class));
-module.exports = UserEntity;
+var _default = UserEntity;
+exports["default"] = _default;
