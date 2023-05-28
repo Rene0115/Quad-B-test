@@ -42,4 +42,3 @@ export class UserEntity extends BaseEntity{
   name;
 }
 
-export default UserEntity;
